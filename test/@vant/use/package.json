@@ -1,0 +1,72 @@
+{
+  "_args": [
+    [
+      "@vant/use@1.3.4",
+      "/4room"
+    ]
+  ],
+  "_from": "@vant/use@1.3.4",
+  "_id": "@vant/use@1.3.4",
+  "_inBundle": false,
+  "_integrity": "sha512-XvZkPCjcmEBhD+T3vB68thOG6P9jazld6aBTMenhbAQd4FT/x9AiKIWPJx4MvhYoSIWt7fju6K01XTJldWs1hw==",
+  "_location": "/@vant/use",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@vant/use@1.3.4",
+    "name": "@vant/use",
+    "escapedName": "@vant%2fuse",
+    "scope": "@vant",
+    "rawSpec": "1.3.4",
+    "saveSpec": null,
+    "fetchSpec": "1.3.4"
+  },
+  "_requiredBy": [
+    "/vant"
+  ],
+  "_resolved": "https://registry.npmjs.org/@vant/use/-/use-1.3.4.tgz",
+  "_spec": "1.3.4",
+  "_where": "/4room",
+  "description": "Vant Composition API",
+  "devDependencies": {
+    "release-it": "^14.0.2",
+    "rollup": "^2.33.3",
+    "rollup-plugin-esbuild": "^4.6.0",
+    "typescript": "4.x",
+    "vue": "^3.2.20"
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "name": "@vant/use",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "release-it": {
+    "git": {
+      "tag": false,
+      "commitMessage": "release: @vant/use ${version}"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youzan/vant/tree/dev/packages/vant-use"
+  },
+  "scripts": {
+    "build": "pnpm clean && pnpm build:bundle && pnpm build:types",
+    "build:bundle": "rollup --config rollup.config.js",
+    "build:types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
+    "clean": "rimraf ./dist",
+    "dev": "rollup --config rollup.config.js --watch",
+    "prepare": "pnpm build",
+    "release": "pnpm build && release-it"
+  },
+  "sideEffects": false,
+  "typings": "dist/index.d.ts",
+  "version": "1.3.4"
+}

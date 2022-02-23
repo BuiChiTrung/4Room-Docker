@@ -1,0 +1,44 @@
+server {
+    listen 80; listen [::]:80;
+    root /4room/dist;
+        
+	index index.html index.htm index.nginx-debian.html;
+	
+	access_log /access.log;
+	error_log /error.log;
+
+    server_name 4room.tech www.4room.tech;
+
+	location / {
+		try_files $uri $uri.html $uri/ /index.html;
+	}
+
+	location /api {
+		alias /4room/public;
+		index index.php;
+
+		try_files $uri $uri/ /index.php?$query_string;
+	}
+
+	location /broadcast {
+		alias /4room/public;
+		index index.php;
+
+		try_files $uri $uri/ /index.php?$query_string;
+    }
+	
+	location ~ \.php$ {
+		alias /4room/public;
+		index index.php;
+
+		include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass 4room-docker-be-1:9000;
+    }
+	
+	location /storage {
+		alias /4room/storage/app/public;
+        try_files $uri =404;
+	}
+}
+

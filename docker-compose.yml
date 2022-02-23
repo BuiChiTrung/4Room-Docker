@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  fe:
+    build: ../4Room-FE
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./fe/dist:/4room/volume
+  be:
+    restart: always
+    build: ../4Room-BE
+#    image: php:7.4-fpm-alpine
+    ports:
+      - "9001:9000"
+#    volumes:
+#      - ../4Room-BE:/4room
+  mariadb:
+    image: mariadb
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Trung123
+      - MYSQL_DATABASE=4room
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/4room.tech:/etc/nginx/conf.d/default.conf
+      - ./fe/dist:/4room/dist
+      - ../4Room-BE/storage:/4room/storage
