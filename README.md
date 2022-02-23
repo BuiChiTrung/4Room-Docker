@@ -14,3 +14,9 @@ docker exec -it 4room-docker-fe-1 sh -c "cp -Tr dist volume"
 ```
 docker exec -it 4room-docker-be-1 /bin/sh -c "php artisan migrate:fresh --seed"
 ```
+
+### Possible issue: unable to logout
+```
+docker exec -it 4room-docker-be-1 sh
+chmod 777 -R storage/
+```
