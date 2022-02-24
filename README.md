@@ -1,8 +1,8 @@
 # 4Room - Docker installation
 
 ### Build the app
-```angular2html
-docker-compose up -d 
+```
+docker compose up -d 
 ```
 
 ### Copy built front-end code to nginx volume

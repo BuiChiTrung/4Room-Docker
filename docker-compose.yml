@@ -6,14 +6,12 @@ services:
       - "8080:8080"
     volumes:
       - ./fe/dist:/4room/volume
+#      - ./test:/4room/demo
   be:
     restart: always
     build: ../4Room-BE
-#    image: php:7.4-fpm-alpine
     ports:
       - "9001:9000"
-#    volumes:
-#      - ../4Room-BE:/4room
   mariadb:
     image: mariadb
     ports:
